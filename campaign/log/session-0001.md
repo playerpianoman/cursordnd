@@ -342,3 +342,219 @@ This is an append-only log. Prefer short bullets that capture **facts** and **st
 - Facts add: ["There is a seam or side gap in the masonry ahead where water has eaten a seam.", "You break through the bend into a wider, darker stretch of the drain.", "Two goblins remain close enough to threaten you while reinforcements rush up behind.", "Pain and slowed movement cost you momentum; you don’t get a full gap.", "There’s a possible seam or side gap in the masonry ahead where the wall has eroded."]
 - Timings: {"player_stub_s": 11.683, "classify_s": 35.05, "gm_pre_s": 11.114, "roll_s": 0.0, "gm_post_s": 12.411, "delta_s": 37.775, "persist_s": 0.001, "turn_total_s": 108.034}
 - STATE | Goblin alarm: 4/4 | Rats swarm: 3/4 | Torch dwindles: 2/6 | Stress 3/3 | Supply 3/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement
+
+## Turn 11 (2026-02-04 10:24:18)
+- Player: With the goblin press closing in, I grit through the pain, wrench the shield free from the pinch, and shove hard into the gap to break through toward the deeper dark, aiming to reach the tunnel beyond before reinforcements seal the way.
+- Roll: pool=2 rolls=[6, 2] highest=6 outcome=hit
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 1}, {"name": "Torch dwindles", "delta": 0}]
+- PC deltas: {"stress_delta": -1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["Draft ahead hints at a larger space or outlet deeper in.", "The tunnel transitions from old brick to rough-cut stone, suggesting an older, deeper section.", "A narrow, drier maintenance ledge runs along the right wall, offering faster footing than the runnel.", "You broke through the pinch and gained a few precious body-lengths on the goblins.", "There’s a noticeable draft ahead, hinting at a larger space or an outlet deeper in.", "The tunnel transitions from old brick to rough-cut stone, suggesting an older, deeper section.", "A narrow, drier maintenance ledge runs along the right wall, offering faster footing than the runnel."]
+- Timings: {"player_stub_s": 20.536, "classify_s": 34.532, "gm_pre_s": 12.22, "roll_s": 0.0, "gm_post_s": 13.359, "delta_s": 39.846, "persist_s": 0.002, "turn_total_s": 120.496}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 2/6 | Stress 2/3 | Supply 3/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement
+
+## Turn 12 (2026-02-04 10:26:07)
+- Player: Stop just past the widening and brace for a fast shieldwall stand to knock the first goblin back into the pinch
+- Roll: pool=2 rolls=[2, 1] highest=2 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": ["Ribs flare in pain as you strain under the pin; combat stress rises."], "harm_remove": []}
+- Facts add: ["The widening is slick with algae and too cramped for a stable shield bash.", "A goblin has slipped past your shield to your flank and is trying to drag you back into the pinch.", "More goblins are closing in from ahead around the bend; you’re at risk of being surrounded.", "The rat swarm around your feet is actively ruining footing and balance.", "The widening is slick with algae and too cramped for a stable shield bash.", "One goblin has slipped past your shield to your flank and is trying to drag you back into the pinch.", "More goblins are closing in from ahead around the bend; you’re at risk of being surrounded.", "The rat swarm around your feet is actively ruining footing and balance."]
+- Timings: {"player_stub_s": 15.07, "classify_s": 32.841, "gm_pre_s": 13.072, "roll_s": 0.0, "gm_post_s": 11.396, "delta_s": 36.708, "persist_s": 0.007, "turn_total_s": 109.095}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 3/6 | Stress 3/3 | Supply 3/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement, Ribs flare in pain as you strain under the pin; combat stress rises.
+
+## Turn 13 (2026-02-04 10:28:00)
+- Player: Drop your pack/loose gear to lighten and lunge forward past the bend before they can lock you in
+- Roll: pool=2 rolls=[4, 1] highest=4 outcome=mixed
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": -1, "harm_add": ["Ribs bruised further by exertion; pain spikes when you strain."], "harm_remove": []}
+- Facts add: ["You made it past the bend into a slightly wider stretch of the Dark Run", "A goblin spear probes around the corner, keeping you from simply sprinting straight away", "Your pack is left behind at the pinch and is being swarmed by rats under goblin torchlight", "The rats are thickest along the edges here, moving like a living current", "You make it past the bend into a slightly wider stretch of the Dark Run", "A goblin spear probes around the corner, keeping you from simply sprinting straight away", "Your pack is left behind at the pinch and is being swarmed by rats under goblin torchlight", "The rats are thickest along the edges here, moving like a living current"]
+- Timings: {"player_stub_s": 18.915, "classify_s": 26.639, "gm_pre_s": 12.2, "roll_s": 0.0, "gm_post_s": 14.71, "delta_s": 40.559, "persist_s": 0.003, "turn_total_s": 113.027}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 4/6 | Stress 3/3 | Supply 2/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement, Ribs flare in pain as you strain under the pin; combat stress rises., Ribs bruised further by exertion; pain spikes when you strain.
+
+## Turn 14 (2026-02-04 10:29:47)
+- Player: Misdirect: hurl a stone or shout down one side passage/echoing culvert to pull them the wrong way
+- Roll: pool=1 rolls=[5] highest=5 outcome=mixed
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 0, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["Several goblins commit to the wrong culvert, thinning the immediate pressure behind you.", "One goblin remains and is closing carefully, using the pinch point to trap you.", "The rats surge harder with the noise, making the floor a shifting hazard underfoot.", "Several goblins commit to the wrong culvert, thinning the immediate pressure behind you.", "One goblin remains and is closing carefully, using the pinch point to trap you.", "The rats surge harder with the noise, making the floor a shifting hazard underfoot."]
+- Timings: {"player_stub_s": 17.799, "classify_s": 35.914, "gm_pre_s": 11.014, "roll_s": 0.0, "gm_post_s": 11.504, "delta_s": 31.315, "persist_s": 0.006, "turn_total_s": 107.553}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 5/6 | Stress 3/3 | Supply 2/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement, Ribs flare in pain as you strain under the pin; combat stress rises., Ribs bruised further by exertion; pain spikes when you strain.
+
+## Turn 15 (2026-02-04 10:31:40)
+- Player: Explode forward: wrench free and push into the deeper bend before the others realize the feint
+- Roll: pool=2 rolls=[4, 1] highest=4 outcome=mixed
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": -1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": ["Winded from goblin jab as you burst free into the deeper bend"], "harm_remove": []}
+- Facts add: ["You break through into the deeper bend, gaining a narrow pocket of space beyond the choke.", "A goblin jab clips you as you surge past, leaving you winded and off-balance.", "Reinforcements are moments away and are stacking at the bend with coordinated orders.", "You break through into the deeper bend, gaining a narrow pocket of space beyond the choke.", "A goblin’s quick jab clips you as you surge past, leaving you briefly winded and off-balance.", "Reinforcements are moments away and are stacking at the bend with coordinated orders."]
+- Timings: {"player_stub_s": 15.489, "classify_s": 29.663, "gm_pre_s": 11.039, "roll_s": 0.0, "gm_post_s": 11.828, "delta_s": 44.235, "persist_s": 0.004, "turn_total_s": 112.258}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 4/6 | Stress 3/3 | Supply 2/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement, Ribs flare in pain as you strain under the pin; combat stress rises., Ribs bruised further by exertion; pain spikes when you strain., Winded from goblin jab as you burst free into the deeper bend
+
+## Turn 14 (2026-02-04 10:32:28)
+- Player: I attempt to break through the goblin press toward the deeper dark, using the shield as a ram to create a momentary opening and slip into the drain before reinforcements close in.
+- Roll: pool=2 rolls=[5, 4] highest=5 outcome=mixed
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": -1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["There is a shallow side recess just before the bend that could be used to gain cover or stage a hold.", "Reinforcements are closing at the choke behind you, but the deeper drain ahead offers distance and a possible misdirection.", "You break through into the deeper, colder section of the drain, past the pinch point.", "A goblin hook wrenches your shield arm hard as you pass, worsening the numbness and throwing you off-balance.", "There’s a shallow side recess/erosion cut just before the next bend—barely enough to tuck into or use as cover.", "Goblins are still within striking distance, and reinforcements are now arriving at the choke behind you."]
+- Timings: {"player_stub_s": 16.323, "classify_s": 35.312, "gm_pre_s": 11.211, "roll_s": 0.0, "gm_post_s": 73.656, "delta_s": 50.481, "persist_s": 0.005, "turn_total_s": 186.988}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 3/6 | Stress 3/3 | Supply 2/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement, Ribs flare in pain as you strain under the pin; combat stress rises., Ribs bruised further by exertion; pain spikes when you strain.
+
+## Turn 15 (2026-02-04 10:34:31)
+- Player: Slow and sabotage: kick debris and rat-slick muck into the channel to trip the lead pursuers, then move
+- Roll: pool=1 rolls=[1] highest=1 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": ["Ribs flare with pain as you strain under the pin; breathing grows shallow."], "harm_remove": []}
+- Facts add: ["Lead goblin pinned your shield edge against the wall; spear-jab scraped your side.", "Reinforcements are at the bend and closing the choke point.", "Torch is guttering and will likely fail soon if not moved.", "The muck is too slick to reliably trip pursuers; it’s working against your footing.", "A lead goblin has your shield edge momentarily pinned against the wall with a spear-hooking jab.", "Reinforcements are within moments of rounding the bend into the choke point.", "Your torch is guttering in the damp, threatening to dim your visibility further."]
+- Timings: {"player_stub_s": 11.147, "classify_s": 38.356, "gm_pre_s": 14.443, "roll_s": 0.0, "gm_post_s": 13.606, "delta_s": 44.828, "persist_s": 0.004, "turn_total_s": 122.386}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 4/6 | Stress 3/3 | Supply 2/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement, Ribs flare in pain as you strain under the pin; combat stress rises., Ribs bruised further by exertion; pain spikes when you strain., Ribs flare with pain as you strain under the pin; breathing grows shallow.
+
+## Turn 16 (2026-02-04 10:36:27)
+- Player: Go low and violent: bash knees/ankles in the tight space to drop the front goblin and buy a breath
+- Roll: pool=2 rolls=[1, 3] highest=3 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 1}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": ["Shoulder seized; arm goes numb; grip weakens under pin"], "harm_remove": []}
+- Facts add: ["The slick stone and rat-swarm make footing unreliable; low strikes risk skidding out.", "Goblins are using hooked spears specifically to pin and lever your shield in the choke.", "Two goblins have pressed into immediate melee range while more stack at the bend.", "The slick stone and rat-swarm make footing unreliable; low strikes risk skidding out.", "Goblins are using hooked spears specifically to pin and lever your shield in the choke.", "Two goblins have pressed into immediate melee range while more stack at the bend."]
+- Timings: {"player_stub_s": 11.444, "classify_s": 35.753, "gm_pre_s": 9.193, "roll_s": 0.0, "gm_post_s": 13.387, "delta_s": 46.469, "persist_s": 0.005, "turn_total_s": 116.25}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 5/6 | Stress 3/3 | Supply 2/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement, Ribs flare in pain as you strain under the pin; combat stress rises., Ribs bruised further by exertion; pain spikes when you strain., Ribs flare with pain as you strain under the pin; breathing grows shallow., Shoulder seized; arm goes numb; grip weakens under pin
+
+## Turn 1 (2026-02-04 10:38:15)
+- Player: Bash forward through the dogleg, using shield and shoulder to break into the deeper dark before they can snag you
+- Roll: pool=2 rolls=[1, 3] highest=3 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": ["Slightly bruised flank from goblin spear"], "harm_remove": []}
+- Facts add: ["Dogleg choke point is currently goblin-controlled.", "Shield edge is snagged, limiting forward movement.", "Goblins use coordinated call-signals; a deeper response echoes from further down the drain.", "The dogleg choke point is controlled by the goblins for the moment, with hooks and angles on you", "Your shield is snagged and wrenched sideways, limiting clean forward movement", "Goblins are using coordinated call-signals; something deeper answered back"]
+- Timings: {"player_stub_s": 9.355, "classify_s": 29.717, "gm_pre_s": 9.232, "roll_s": 0.0, "gm_post_s": 11.229, "delta_s": 24.299, "persist_s": 0.002, "turn_total_s": 83.834}
+- STATE | Goblin alarm: 1/4 | Rats swarm: 0/4 | Torch dwindles: 1/6 | Stress 1/3 | Supply 3/3 | Harm: Slightly bruised flank from goblin spear
+
+## Turn 17 (2026-02-04 10:38:19)
+- Player: Hook and twist: trap the spearhead on your shield rim, then wrench to disarm and create an opening
+- Roll: pool=1 rolls=[6] highest=6 outcome=hit
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": -1}]
+- PC deltas: {"stress_delta": 0, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["The spear is disarmed and pulled back into the goblin press.", "A brief opening at the choke point exists right now, before the next goblin weapon replaces it.", "Goblins are switching to shorter, closer-quarters tools at the pinch.", "Reinforcement footsteps are closing from behind the front line.", "The spear is disarmed and pulled back into the goblin press.", "A brief opening at the choke point exists right now, before the next goblin weapon replaces it.", "Goblins are switching to shorter, closer-quarters tools at the pinch.", "Reinforcement footsteps are closing from behind the front line."]
+- Timings: {"player_stub_s": 8.724, "classify_s": 40.409, "gm_pre_s": 12.966, "roll_s": 0.0, "gm_post_s": 11.933, "delta_s": 38.524, "persist_s": 0.003, "turn_total_s": 112.559}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 4/6 | Stress 3/3 | Supply 2/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement, Ribs flare in pain as you strain under the pin; combat stress rises., Ribs bruised further by exertion; pain spikes when you strain., Ribs flare with pain as you strain under the pin; breathing grows shallow., Shoulder seized; arm goes numb; grip weakens under pin
+
+## Turn 18 (2026-02-04 10:40:08)
+- Player: Reset a tighter defensive angle: shield up, back to stone, and force them to come one-at-a-time
+- Roll: pool=2 rolls=[4, 1] highest=4 outcome=mixed
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["Your shield angle works: the goblins are still forced into a narrow approach for the moment.", "The goblins are being timed and coordinated by a horn/whistle caller near the bend.", "Rats are actively undermining your footing; any sudden move risks a slip or stumble.", "Reinforcements are stacking up close enough that the pressure will spike any second.", "Your shield angle works: the goblins are still forced into a narrow approach for the moment.", "The goblins are being timed and coordinated by a horn/whistle caller near the bend.", "Rats are actively undermining your footing; any sudden move risks a slip or stumble.", "Reinforcements are stacking up close enough that the pressure will spike any second."]
+- Timings: {"player_stub_s": 10.682, "classify_s": 36.383, "gm_pre_s": 13.181, "roll_s": 0.0, "gm_post_s": 20.427, "delta_s": 27.55, "persist_s": 0.004, "turn_total_s": 108.227}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 4/4 | Torch dwindles: 5/6 | Stress 3/3 | Supply 2/3 | Harm: Arm numb from shield snag, Glancing blow to ribs during recovery, Ribs bruised further by the goblin shove; pain flares when you strain., Arm numb from shield snag worsens as you wrench through the slit, Hip bruised from goblin shove; slows movement., Ribs throb with each breath as you strain under the pin; pain flares with movement, Ribs flare in pain as you strain under the pin; combat stress rises., Ribs bruised further by exertion; pain spikes when you strain., Ribs flare with pain as you strain under the pin; breathing grows shallow., Shoulder seized; arm goes numb; grip weakens under pin
+
+## Turn 1 (2026-02-04 10:40:29)
+- Player: Use the environment—kick water, loose stones, or a thrown scrap—to draw them into a bad angle
+- Roll: pool=1 rolls=[1] highest=1 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": ["Light cut on arm from goblin blade"], "harm_remove": []}
+- Facts add: ["Thrown tin betrayed your exact position when it clattered too close.", "At least three goblins are on you now: two going low, one using the torch to dazzle and signal.", "A goblin is about to sound an alarm call from just beyond the bend.", "The thrown tin betrayed your exact position when it clattered too close.", "At least three goblins are on you now: two going low, one using the torch to dazzle and signal.", "A goblin is about to sound an alarm call from just beyond the bend."]
+- Timings: {"player_stub_s": 13.466, "classify_s": 36.127, "gm_pre_s": 11.207, "roll_s": 0.0, "gm_post_s": 13.439, "delta_s": 36.123, "persist_s": 0.002, "turn_total_s": 110.364}
+- STATE | Goblin alarm: 1/4 | Rats swarm: 0/4 | Torch dwindles: 1/6 | Stress 1/3 | Supply 3/3 | Harm: Light cut on arm from goblin blade
+
+## Turn 2 (2026-02-04 10:42:26)
+- Player: Shield-smash the torchbearer into the wall to snuff the light and disrupt the call, then press through the bend
+- Roll: pool=2 rolls=[3, 1] highest=3 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": ["Arm cut worsened (reopened) by goblin blade during pinch"], "harm_remove": []}
+- Facts add: ["The torch catches on pitch in the wall and stays lit, flaring brighter instead of dying", "A goblin horn is sounded; the alarm carries down the drain", "A goblin with a hooked polearm has your shield rim and is trying to wrench you off-balance", "Reinforcements are splashing in from behind, threatening to trap you in the pinch", "Your arm cut is reopened by a glancing blade at the bend", "The torch catches on pitch in the wall and stays lit, flaring brighter instead of dying", "A goblin horn is sounded; the alarm carries down the drain", "A goblin with a hooked polearm has your shield rim and is trying to wrench you off-balance", "Reinforcements are splashing in from behind, threatening to trap you in the pinch", "Your arm cut is reopened by a glancing blade at the bend"]
+- Timings: {"player_stub_s": 20.064, "classify_s": 28.758, "gm_pre_s": 11.028, "roll_s": 0.0, "gm_post_s": 16.266, "delta_s": 40.445, "persist_s": 0.004, "turn_total_s": 116.565}
+- STATE | Goblin alarm: 2/4 | Rats swarm: 0/4 | Torch dwindles: 1/6 | Stress 2/3 | Supply 3/3 | Harm: Light cut on arm from goblin blade, Arm cut worsened (reopened) by goblin blade during pinch
+
+## Turn 1 (2026-02-04 10:42:36)
+- Player: Use the water and debris—kick loose brick and bone into the flow to foul their footing and scatter them
+- Roll: pool=2 rolls=[1, 3] highest=3 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 1}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["The floor in the dip is dangerously slick; committing forward without a sure brace is risky.", "The goblins can tighten into a disciplined spear line when prompted by a caller.", "One goblin is using the side ledge to attack from above your shield angle.", "An alarm call carries deeper into the drain—reinforcements are likely on the way.", "The floor in the dip is dangerously slick; committing forward without a sure brace is risky.", "The goblins can tighten into a disciplined spear line when prompted by a caller.", "One goblin is using the side ledge to attack from above your shield angle.", "An alarm call carries deeper into the drain—reinforcements are likely on the way."]
+- Timings: {"player_stub_s": 7.757, "classify_s": 21.049, "gm_pre_s": 10.387, "roll_s": 0.0, "gm_post_s": 12.75, "delta_s": 29.157, "persist_s": 0.002, "turn_total_s": 81.102}
+- STATE | Goblin alarm: 1/4 | Rats swarm: 1/4 | Torch dwindles: 1/6 | Stress 1/3 | Supply 3/3 | Harm: none
+
+## Turn 2 (2026-02-04 10:43:55)
+- Player: Give ground a step, then slam your shield into the narrowest point to wedge a brief barricade
+- Roll: pool=2 rolls=[1, 4] highest=4 outcome=mixed
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 1}, {"name": "Torch dwindles", "delta": 0}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["Your shield wedge holds for the moment, but it’s being actively pried apart.", "A goblin in the rear is calling an alarm to bring more bodies to the choke point.", "The goblins at the front are using tools and debris to force a gap rather than charging blindly.", "Your shield wedge holds for the moment, but it’s being actively pried apart.", "A goblin in the rear is calling an alarm to bring more bodies to the choke point.", "The goblins at the front are using tools and debris to force a gap rather than charging blindly."]
+- Timings: {"player_stub_s": 6.884, "classify_s": 21.018, "gm_pre_s": 12.476, "roll_s": 0.0, "gm_post_s": 12.587, "delta_s": 25.63, "persist_s": 0.002, "turn_total_s": 78.597}
+- STATE | Goblin alarm: 2/4 | Rats swarm: 2/4 | Torch dwindles: 1/6 | Stress 2/3 | Supply 3/3 | Harm: none
+
+## Turn 3 (2026-02-04 10:44:19)
+- Player: Rip and rush: wrench the shield free even if it costs you, then drive through the bend into the dark
+- Roll: pool=2 rolls=[4, 3] highest=4 outcome=mixed
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 1}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["You broke through the bend into colder, wetter tunnel—no longer pinned at the choke.", "A goblin briefly latched onto your shield and forced you to stumble on the slick runoff.", "There’s a narrow maintenance slit at knee height along the right wall just past the bend.", "You hear a distant goblin response ahead—alarm is propagating deeper in the drain.", "You broke through the bend into colder, wetter tunnel—no longer pinned at the choke.", "A goblin briefly latched onto your shield and forced you to stumble on the slick runoff.", "There’s a narrow maintenance slit at knee height along the right wall just past the bend.", "You hear a distant goblin response ahead—alarm is propagating deeper in the drain."]
+- Timings: {"player_stub_s": 19.145, "classify_s": 32.366, "gm_pre_s": 10.862, "roll_s": 0.0, "gm_post_s": 12.466, "delta_s": 38.425, "persist_s": 0.002, "turn_total_s": 113.268}
+- STATE | Goblin alarm: 3/4 | Rats swarm: 1/4 | Torch dwindles: 2/6 | Stress 3/3 | Supply 3/3 | Harm: Light cut on arm from goblin blade, Arm cut worsened (reopened) by goblin blade during pinch
+
+## Turn 1 (2026-02-04 10:45:37)
+- Player: Climb the corroded rungs into the cracked brick shadow to flank or slip past them.
+- Roll: pool=1 rolls=[1] highest=1 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 0}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["The corroded rung-ladder is unsafe; at least one rung has torn free and the route is compromised.", "The noise has drawn immediate attention—two goblins commit to the pinch while another takes higher ground to watch.", "Reinforcements are approaching from deeper in the run beyond the bend.", "The corroded rung-ladder is unsafe; at least one rung has torn free and the route is compromised.", "The noise has drawn immediate attention—two goblins commit to the pinch while another takes higher ground to watch.", "Reinforcements are approaching from deeper in the run beyond the bend."]
+- Timings: {"player_stub_s": 8.042, "classify_s": 23.926, "gm_pre_s": 13.719, "roll_s": 0.0, "gm_post_s": 10.793, "delta_s": 22.519, "persist_s": 0.003, "turn_total_s": 79.003}
+- STATE | Goblin alarm: 1/4 | Rats swarm: 0/4 | Torch dwindles: 0/6 | Stress 1/3 | Supply 3/3 | Harm: none
+
+## Turn 3 (2026-02-04 10:45:41)
+- Player: Create a distraction: kick water and grit into their faces, then pivot to reposition toward the deeper dark
+- Roll: pool=2 rolls=[3, 1] highest=3 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 1}, {"name": "Torch dwindles", "delta": 0}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": ["Shallow thigh scrape from goblin spear"], "harm_remove": []}
+- Facts add: ["The churned silt makes the dip dangerously slick; footing is compromised.", "A goblin hook-spear snagged Fighter's shield rim and pulled them off balance.", "Reinforcements have arrived within a few strides; an alarm whistle is relaying the warning.", "You’ve sustained a shallow thigh scrape from the spear—painful but non-crippling.", "The churned silt makes the dip dangerously slick; fast footwork is compromised here.", "A goblin hook-spear has your shield rim snagged and is trying to pull you off-balance.", "Reinforcements have arrived within a few strides, and a whistle is being used to relay the alarm.", "You’ve taken a shallow thigh scrape—painful but not crippling—for now."]
+- Timings: {"player_stub_s": 10.392, "classify_s": 39.856, "gm_pre_s": 11.007, "roll_s": 0.0, "gm_post_s": 13.744, "delta_s": 31.211, "persist_s": 0.004, "turn_total_s": 106.215}
+- STATE | Goblin alarm: 3/4 | Rats swarm: 3/4 | Torch dwindles: 1/6 | Stress 3/3 | Supply 3/3 | Harm: Shallow thigh scrape from goblin spear
+
+## Turn 4 (2026-02-04 10:46:58)
+- Player: Dive for the maintenance slit and use it as cover to slip past while they rush by
+- Roll: pool=1 rolls=[1] highest=1 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["The maintenance slit is being actively leveraged against you; a goblin has a spike braced on the grate-frame to pry you out.", "At least two goblins have you contained at the slit mouth while more are closing from behind.", "You are pinned sideways with your shield trapped, limiting your ability to swing or retreat cleanly.", "The maintenance slit is being actively leveraged against you; a goblin has a spike braced on the grate-frame to pry you out.", "At least two goblins have you contained at the slit mouth while more are closing from behind.", "You are pinned sideways with your shield trapped, limiting your ability to swing or retreat cleanly."]
+- Timings: {"player_stub_s": 14.674, "classify_s": 41.33, "gm_pre_s": 12.08, "roll_s": 0.0, "gm_post_s": 14.333, "delta_s": 76.084, "persist_s": 0.003, "turn_total_s": 158.504}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 1/4 | Torch dwindles: 3/6 | Stress 3/3 | Supply 3/3 | Harm: Light cut on arm from goblin blade, Arm cut worsened (reopened) by goblin blade during pinch
+
+## Turn 2 (2026-02-04 10:47:08)
+- Player: Drag debris and the broken rung into a quick barricade, forcing them to funnel while you hold
+- Roll: pool=2 rolls=[3, 1] highest=3 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 0}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["The barricade collapses into a noisy spill, failing to create a stable funnel", "Two goblins push into close quarters immediately while more mass at the bend", "The clatter of debris audibly carries; the goblins’ response sounds coordinated", "The Goblin alarm intensifies with distant answering calls", "The barricade collapses into a noisy spill, failing to create a stable funnel", "Two goblins push into close quarters immediately while more mass at the bend", "The clatter of debris audibly carries; the goblins’ response sounds coordinated", "The Goblin alarm intensifies with distant answering calls"]
+- Timings: {"player_stub_s": 7.043, "classify_s": 31.393, "gm_pre_s": 11.809, "roll_s": 0.0, "gm_post_s": 14.086, "delta_s": 27.156, "persist_s": 0.002, "turn_total_s": 91.488}
+- STATE | Goblin alarm: 2/4 | Rats swarm: 0/4 | Torch dwindles: 0/6 | Stress 2/3 | Supply 3/3 | Harm: none
+
+## Turn 3 (2026-02-04 10:48:48)
+- Player: Feint a retreat, then step sideways to jam the spill pile into a new choke with your shoulder and shield
+- Roll: pool=1 rolls=[4] highest=4 outcome=mixed
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 0}, {"name": "Torch dwindles", "delta": 0}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["The spill pile can be jammed into a workable choke, but it’s unstable under impact.", "One goblin has wedged itself into the narrowed gap, becoming a living blockage you can exploit—or a foothold for others.", "Reinforcements with at least one torch are gathering just beyond the bend.", "The spill pile can be jammed into a workable choke, but it’s unstable under impact.", "One goblin has wedged itself into the narrowed gap, becoming a living blockage you can exploit—or a foothold for others.", "Reinforcements with at least one torch are gathering just beyond the bend."]
+- Timings: {"player_stub_s": 13.394, "classify_s": 34.645, "gm_pre_s": 10.084, "roll_s": 0.0, "gm_post_s": 12.956, "delta_s": 28.887, "persist_s": 0.004, "turn_total_s": 99.969}
+- STATE | Goblin alarm: 3/4 | Rats swarm: 0/4 | Torch dwindles: 0/6 | Stress 3/3 | Supply 3/3 | Harm: none
+
+## Turn 5 (2026-02-04 10:49:04)
+- Player: Drive your elbow/helmet backward into the nearest goblin’s face to buy a moment, then wrench free
+- Roll: pool=2 rolls=[1, 4] highest=4 outcome=mixed
+- Clock deltas: [{"name": "Goblin alarm", "delta": 0}, {"name": "Rats swarm", "delta": 2}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 0, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["You broke free into the deeper Dark Run, but took another quick cut on your shield-side forearm", "The tunnel beyond the bend is slightly wider and slopes down, giving you room to move but not to fully disengage", "Reinforcements are close; the goblins are now converging on your exact position", "Rats are stirring in the side channels, drawn by scent and noise", "You broke free into the deeper Dark Run, but took another quick cut on your shield-side forearm", "The tunnel beyond the bend is slightly wider and slopes down, giving you room to move but not to fully disengage", "Reinforcements are close; the goblins are now converging on your exact position", "Rats are stirring in the side channels, drawn by scent and noise"]
+- Timings: {"player_stub_s": 12.561, "classify_s": 43.428, "gm_pre_s": 9.461, "roll_s": 0.0, "gm_post_s": 13.33, "delta_s": 47.821, "persist_s": 0.003, "turn_total_s": 126.604}
+- STATE | Goblin alarm: 4/4 | Rats swarm: 3/4 | Torch dwindles: 4/6 | Stress 3/3 | Supply 3/3 | Harm: Light cut on arm from goblin blade, Arm cut worsened (reopened) by goblin blade during pinch
+
+## Turn 1 (2026-02-04 10:51:48)
+- Player: Burst through the pinch and charge the bend, trying to scatter the first goblins before the rest pile in
+- Roll: pool=2 rolls=[1, 3] highest=3 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 1}, {"name": "Torch dwindles", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["The bend’s footing is slick and slightly dropped, easy to lose balance on during a charge", "The goblins are using a hooking rope/pole tactic to immobilize rather than trade blows", "A brick lip near the bend lets a goblin get a higher angle to stab down at your guard", "The bend’s footing is slick and slightly dropped, easy to lose balance on during a charge", "The goblins are using a hooking rope/pole tactic to immobilize rather than trade blows", "A brick lip near the bend lets a goblin get a higher angle to stab down at your guard"]
+- Timings: {"player_stub_s": 8.3, "classify_s": 32.491, "gm_pre_s": 12.482, "roll_s": 0.0, "gm_post_s": 15.772, "delta_s": 30.796, "persist_s": 0.003, "turn_total_s": 99.844}
+- STATE | Goblin alarm: 1/4 | Rats swarm: 1/4 | Torch dwindles: 1/6 | Stress 1/3 | Supply 3/3 | Harm: none
+
+## Turn 1 (2026-02-04 11:36:18)
+- Player: Bull through the bend with shield up, forcing a path into the deeper run before they can form up
+- Roll: pool=1 rolls=[1] highest=1 outcome=miss
+- Clock deltas: [{"name": "Goblin alarm", "delta": 1}, {"name": "Rats swarm", "delta": 1}]
+- PC deltas: {"stress_delta": 1, "supply_delta": 0, "harm_add": [], "harm_remove": []}
+- Facts add: ["The pinch is slick with algae; footing is treacherous in the dip.", "Goblins are using hooked spears and a quick board-barricade tactic to stop a rush.", "Your shield is momentarily caught and twisted by the hook, slowing you.", "A distant goblin call answered your clang from deeper in the drain.", "The pinch is slick with algae; footing is treacherous in the dip.", "Goblins are using hooked spears and a quick board-barricade tactic to stop a rush.", "Your shield is momentarily caught and twisted by the hook, slowing you.", "A distant goblin call answered your clang from deeper in the drain."]
+- Timings: {"player_stub_s": 1.19, "classify_s": 1.36, "gm_pre_s": 12.609, "roll_s": 0.0, "gm_post_s": 17.86, "delta_s": 2.198, "persist_s": 0.003, "turn_total_s": 35.22}
+- STATE | Goblin alarm: 1/4 | Rats swarm: 1/4 | Torch dwindles: 0/6 | Stress 1/3 | Supply 3/3 | Harm: none

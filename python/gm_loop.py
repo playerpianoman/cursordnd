@@ -31,14 +31,20 @@ from openai import OpenAI
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# Paths are configured at runtime from CLI args.
 CAMPAIGN_DIR = ROOT / "campaign"
 CANON_PATH = CAMPAIGN_DIR / "canon.json"
 OPEN_THREADS_PATH = CAMPAIGN_DIR / "open_threads.md"
 LOG_PATH = CAMPAIGN_DIR / "log" / "session-0001.md"
 RECAP_PATH = CAMPAIGN_DIR / "recaps" / "session-0001.md"
+CANON_ARCHIVE_DIR = CAMPAIGN_DIR / "canon_archive"
+CANON_ARCHIVE_PATH = CANON_ARCHIVE_DIR / "session-0001.json"
+EVALS_DIR = CAMPAIGN_DIR / "evals"
+EVAL_PATH = EVALS_DIR / "session-0001.md"
 
 
-DEFAULT_NANO_MODEL = "gpt-5-nano"
+DEFAULT_UTILITY_MODEL = "gpt-5-nano"
 DEFAULT_CHAT_MODEL = "gpt-5.2"
 
 
@@ -71,6 +77,11 @@ def _dedupe_extend(dst: List[str], src: List[str], *, max_items: Optional[int] =
 def die(msg: str) -> None:
     raise SystemExit(msg)
 
+def status(msg: str) -> None:
+    # Print progress to stderr so it doesn't mix with the game narration on stdout.
+    # Flush to ensure it appears immediately even if output buffering is enabled.
+    print(msg, file=sys.stderr, flush=True)
+
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
@@ -101,6 +112,182 @@ def append_log(lines: List[str]) -> None:
     with LOG_PATH.open("a", encoding="utf-8") as f:
         for line in lines:
             f.write(line.rstrip() + "\n")
+
+def _md_blockquote(text: str) -> List[str]:
+    text = (text or "").rstrip("\n")
+    if not text:
+        return ["> (empty)"]
+    return ["> " + line for line in text.splitlines()]
+
+def ensure_log_header(*, session: str, meta: Dict[str, Any]) -> None:
+    """
+    Write a short header at the top of a new session log so it's obvious
+    which provider/models produced the run.
+    """
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    if LOG_PATH.exists():
+        try:
+            if LOG_PATH.stat().st_size > 0:
+                return
+        except Exception:
+            # If stat fails, be conservative and avoid overwriting.
+            return
+    lines = [
+        f"# {session}",
+        "",
+        "## Run meta",
+        f"- started_at: {time.strftime('%Y-%m-%d %H:%M:%S')}",
+        "- eval_rubric: docs/eval-rubric.md",
+    ]
+    for k in sorted(meta.keys()):
+        lines.append(f"- {k}: {meta[k]}")
+    lines.append("")
+    atomic_write_text(LOG_PATH, "\n".join(lines))
+
+
+def ensure_eval_scorecard(*, session: str, meta: Dict[str, Any]) -> None:
+    """
+    Create a lightweight, human-fillable eval scorecard per session.
+    We avoid overwriting if it already exists (so manual scores are preserved).
+    """
+    EVALS_DIR.mkdir(parents=True, exist_ok=True)
+    if EVAL_PATH.exists():
+        try:
+            if EVAL_PATH.stat().st_size > 0:
+                return
+        except Exception:
+            return
+
+    lines = [
+        f"# Eval: {session}",
+        "",
+        "- rubric: docs/eval-rubric.md",
+        f"- started_at: {time.strftime('%Y-%m-%d %H:%M:%S')}",
+    ]
+    for k in sorted(meta.keys()):
+        lines.append(f"- {k}: {meta[k]}")
+    lines += [
+        "",
+        "## Scores (fill in)",
+        "",
+        "Use 1–4 scale (1 Inadequate, 2 Requires improvement, 3 Good, 4 Outstanding).",
+        "",
+        "### Adjudication",
+        "- A1 Rules compliance: __",
+        "- A2 Stakes clarity: __",
+        "- A3 Consequence calibration & balance: __",
+        "- A4 State discipline: __",
+        "- A5 Combat follow-through & threat pressure: __",
+        "- A6 Clocks have teeth (expiry consequences): __",
+        "",
+        "### Narration",
+        "- N1 Clarity & scene readability: __",
+        "- N2 Agency & actionable options: __",
+        "- N3 Pacing & momentum: __",
+        "- N4 Consistency & tone: __",
+        "",
+        "## Notes",
+        "- Did we ever reach combat when it was warranted? (yes/no/unclear):",
+        "- Did any clock expire, and did it cause a committed consequence? (yes/no/n/a):",
+        "- Strengths:",
+        "- Weaknesses:",
+        "- Would you ship this configuration? (yes/no/with caveats):",
+        "",
+        "## Auto metrics (filled by the runner)",
+        "",
+        "(pending)",
+        "",
+    ]
+    atomic_write_text(EVAL_PATH, "\n".join(lines))
+
+
+def append_eval(lines: List[str]) -> None:
+    EVAL_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with EVAL_PATH.open("a", encoding="utf-8") as f:
+        for line in lines:
+            f.write(line.rstrip() + "\n")
+
+
+_SESSION_RE = re.compile(r"^session-(\d{4})$")
+
+
+def _session_num_from_name(name: str) -> Optional[int]:
+    m = _SESSION_RE.match(name)
+    if not m:
+        return None
+    try:
+        return int(m.group(1))
+    except Exception:
+        return None
+
+
+def next_session_name(*, log_dir: Path) -> str:
+    """
+    Determine the next session name by scanning existing log filenames:
+      campaign/log/session-0001.md -> session-0002
+    """
+    max_n = 0
+    try:
+        for p in log_dir.glob("session-*.md"):
+            n = _session_num_from_name(p.stem)
+            if n is not None:
+                max_n = max(max_n, n)
+    except Exception:
+        pass
+    return f"session-{max_n + 1:04d}"
+
+
+def rotate_sessions(
+    *,
+    campaign_dir: Path,
+    keep: int,
+    exclude_session: Optional[str] = None,
+) -> None:
+    """
+    Keep only the newest N session logs (and matching recap/canon archives).
+    Old sessions are deleted to keep the workspace tidy.
+    """
+    keep = max(1, int(keep))
+    log_dir = campaign_dir / "log"
+    recap_dir = campaign_dir / "recaps"
+    canon_dir = campaign_dir / "canon_archive"
+    eval_dir = campaign_dir / "evals"
+    sessions: List[Tuple[int, str]] = []
+    try:
+        for p in log_dir.glob("session-*.md"):
+            stem = p.stem
+            if exclude_session and stem == exclude_session:
+                continue
+            n = _session_num_from_name(stem)
+            if n is not None:
+                sessions.append((n, stem))
+    except Exception:
+        return
+    sessions.sort()
+    if len(sessions) <= keep:
+        return
+    to_delete = sessions[: max(0, len(sessions) - keep)]
+    for _, stem in to_delete:
+        # log
+        try:
+            (log_dir / f"{stem}.md").unlink(missing_ok=True)
+        except Exception:
+            pass
+        # recap (if present; recaps may not exist for a run)
+        try:
+            (recap_dir / f"{stem}.md").unlink(missing_ok=True)
+        except Exception:
+            pass
+        # canon archive (if present)
+        try:
+            (canon_dir / f"{stem}.json").unlink(missing_ok=True)
+        except Exception:
+            pass
+        # eval scorecard (if present)
+        try:
+            (eval_dir / f"{stem}.md").unlink(missing_ok=True)
+        except Exception:
+            pass
 
 
 def clamp_int(x: int, lo: int, hi: int) -> int:
@@ -182,6 +369,16 @@ def openai_client_from_env() -> OpenAI:
     return OpenAI(api_key=api_key)
 
 
+def openrouter_client_from_env() -> OpenAI:
+    # OpenRouter provides an OpenAI-compatible API surface.
+    # Docs/model page: https://openrouter.ai/google/gemini-2.5-flash-lite
+    load_dotenv(str((Path(__file__).parent / ".env-local").resolve()))
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key:
+        die("OPENROUTER_API_KEY not set. Add it to python/.env-local or the environment.")
+    return OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
+
+
 def call_json(
     client: OpenAI,
     *,
@@ -250,14 +447,26 @@ def call_json(
             # - Some models don't reliably honor `response_format` on this endpoint
             # We try a small set of variants in a stable order.
             # (Some models reject token limits entirely; example_openai.py works because it omits them.)
-            variants: List[Tuple[bool, str]] = [
-                (True, "mct"),    # response_format + max_completion_tokens
-                (False, "mct"),   # no response_format + max_completion_tokens
-                (True, "none"),   # response_format + no token limit
-                (False, "none"),  # no response_format + no token limit
-                (True, "mt"),     # response_format + max_tokens
-                (False, "mt"),    # no response_format + max_tokens
-            ]
+            model_l = (model or "").lower()
+            # Fast/compatible-first ordering for lightweight models and OpenAI-compatible gateways.
+            if ("nano" in model_l) or ("gemini" in model_l) or ("flash" in model_l):
+                # Empirically, nano models can be slow/fail with token limits on this endpoint.
+                # Prioritize the no-limit variants first to avoid extra retry calls.
+                variants: List[Tuple[bool, str]] = [
+                    (True, "none"),   # response_format + no token limit
+                    (False, "none"),  # no response_format + no token limit
+                    (True, "mt"),     # response_format + max_tokens
+                    (False, "mt"),    # no response_format + max_tokens
+                ]
+            else:
+                variants = [
+                    (True, "mct"),    # response_format + max_completion_tokens
+                    (False, "mct"),   # no response_format + max_completion_tokens
+                    (True, "none"),   # response_format + no token limit
+                    (False, "none"),  # no response_format + no token limit
+                    (True, "mt"),     # response_format + max_tokens
+                    (False, "mt"),    # no response_format + max_tokens
+                ]
             last_inner: Optional[Exception] = None
             for use_rf, token_mode in variants:
                 try:
@@ -770,8 +979,51 @@ def latest_recap() -> str:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--nano-model", default=DEFAULT_NANO_MODEL)
+    # "Utility" LLM = player stub + rules classify + canon delta.
+    ap.add_argument("--utility-model", default=DEFAULT_UTILITY_MODEL)
+    ap.add_argument(
+        "--utility-provider",
+        choices=["openai", "openrouter"],
+        default="openai",
+        help="Which API/provider to use for utility steps (player/classify/delta).",
+    )
+    # Backwards-compatible aliases (deprecated)
+    ap.add_argument("--nano-model", dest="utility_model", help=argparse.SUPPRESS)
+    ap.add_argument(
+        "--nano-provider",
+        dest="utility_provider",
+        choices=["openai", "openrouter"],
+        help=argparse.SUPPRESS,
+    )
+    ap.add_argument(
+        "--chat-provider",
+        choices=["openai", "openrouter"],
+        default="openai",
+        help="Which API/provider to use for GM chat steps (opening/pre/post).",
+    )
     ap.add_argument("--chat-model", default=DEFAULT_CHAT_MODEL)
+    ap.add_argument(
+        "--campaign-dir",
+        default="campaign",
+        help="Campaign directory (relative to repo root unless absolute).",
+    )
+    ap.add_argument(
+        "--session",
+        default="auto",
+        help="Session name used for log/recap filenames (no extension). Use 'auto' for next session number.",
+    )
+    ap.add_argument(
+        "--keep-sessions",
+        type=int,
+        default=10,
+        help="Keep only the newest N sessions (logs/recaps/canon archives).",
+    )
+    ap.add_argument(
+        "--archive-canon",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Whether to write a canon snapshot to campaign/canon_archive/<session>.json at the end of the run.",
+    )
     ap.add_argument("--player", choices=["human", "llm"], default="human")
     ap.add_argument("--turns", type=int, default=0, help="If set (>0), stop when canon turn_index reaches N (absolute).")
     ap.add_argument("--run-turns", type=int, default=0, help="If set (>0), run this many turns (relative to current state).")
@@ -780,12 +1032,57 @@ def main() -> None:
     ap.add_argument("--timings", action="store_true", help="Print per-turn timing breakdown.")
     args = ap.parse_args()
 
-    client = openai_client_from_env()
+    # Configure campaign paths for this run.
+    global CAMPAIGN_DIR, CANON_PATH, OPEN_THREADS_PATH, LOG_PATH, RECAP_PATH, CANON_ARCHIVE_DIR, CANON_ARCHIVE_PATH, EVALS_DIR, EVAL_PATH
+    cd = Path(args.campaign_dir)
+    CAMPAIGN_DIR = cd if cd.is_absolute() else (ROOT / cd)
+    CANON_PATH = CAMPAIGN_DIR / "canon.json"
+    OPEN_THREADS_PATH = CAMPAIGN_DIR / "open_threads.md"
+
+    # Resolve session name.
+    log_dir = CAMPAIGN_DIR / "log"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    session = str(args.session or "").strip()
+    if not session or session.lower() == "auto":
+        session = next_session_name(log_dir=log_dir)
+    # Normalize: if user passed "session-0001.md", strip extension.
+    if session.endswith(".md"):
+        session = session[:-3]
+    LOG_PATH = log_dir / f"{session}.md"
+    RECAP_PATH = CAMPAIGN_DIR / "recaps" / f"{session}.md"
+    CANON_ARCHIVE_DIR = CAMPAIGN_DIR / "canon_archive"
+    CANON_ARCHIVE_PATH = CANON_ARCHIVE_DIR / f"{session}.json"
+    EVALS_DIR = CAMPAIGN_DIR / "evals"
+    EVAL_PATH = EVALS_DIR / f"{session}.md"
+
+    # Rotate old sessions (exclude current).
+    rotate_sessions(campaign_dir=CAMPAIGN_DIR, keep=args.keep_sessions, exclude_session=session)
+
+    # Instantiate clients
+    chat_client = openai_client_from_env() if args.chat_provider == "openai" else openrouter_client_from_env()
+    utility_client = openai_client_from_env() if args.utility_provider == "openai" else openrouter_client_from_env()
     canon = load_json(CANON_PATH)
 
     # Ensure directories exist.
     (CAMPAIGN_DIR / "log").mkdir(parents=True, exist_ok=True)
     (CAMPAIGN_DIR / "recaps").mkdir(parents=True, exist_ok=True)
+    CANON_ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
+
+    run_meta = {
+        "utility_provider": args.utility_provider,
+        "utility_model": args.utility_model,
+        "chat_provider": args.chat_provider,
+        "chat_model": args.chat_model,
+        "player": args.player,
+        "seed_override": args.seed,
+        "reset": bool(args.reset),
+    }
+
+    ensure_log_header(
+        session=session,
+        meta=run_meta,
+    )
+    ensure_eval_scorecard(session=session, meta=run_meta)
 
     if args.seed is not None:
         canon.setdefault("rng", {})["seed"] = int(args.seed)
@@ -820,19 +1117,45 @@ def main() -> None:
         maybe_write_open_threads(canon)
 
     recap = latest_recap()
+    session_timings: List[Dict[str, float]] = []
 
     # Bootstrap: if turn_index==0, ask GM to frame the opening without a roll.
     if int(canon.get("turn_index", 0)) == 0:
         opening_player_text = "Start the adventure with a strong opening scene and ask what I do."
         classification = {"needs_roll": False, "approach": "Clever"}
+        status(f"[gm] calling {args.chat_model} (opening scene)...")
         pre = chat_pre_roll(
-            client,
+            chat_client,
             model=args.chat_model,
             canon=canon,
             recap=recap,
             player_text=opening_player_text,
             classification=classification,
         )
+        status("[gm] done (opening scene).")
+
+        # Persist the opening to the session log for later evaluation.
+        opening_lines: List[str] = [
+            "",
+            "## Opening",
+            "",
+            "### GM scene",
+            *_md_blockquote(str(pre.get("scene", ""))),
+            "",
+            "### GM question",
+            str(pre.get("question", "What do you do?")).strip(),
+            "",
+            "### GM options",
+        ]
+        opts = pre.get("options", []) or []
+        if isinstance(opts, list) and opts:
+            for opt in opts[:6]:
+                opening_lines.append(f"- {str(opt).strip()}")
+        else:
+            opening_lines.append("- (none)")
+        opening_lines += ["", "### Creative invite", str(pre.get("creative_invite", "")).strip(), ""]
+        append_log(opening_lines)
+
         print(pre.get("scene", "").rstrip())
         print()
         print(render_state_block(canon))
@@ -869,24 +1192,29 @@ def main() -> None:
                 continue
         else:
             t_ps0 = perf_counter()
+            status(f"[player] calling {args.utility_model} (choose action)...")
             player_text = player_stub(
-                client,
-                model=args.nano_model,
+                utility_client,
+                model=args.utility_model,
                 canon=canon,
                 gm_turn=gm_last,
             )
             t_ps1 = perf_counter()
+            status(f"[player] done in {t_ps1 - t_ps0:.1f}s.")
             print(f"\n> [llm-player] {player_text}")
 
         t_c0 = perf_counter()
+        status(f"[rules] calling {args.utility_model} (classify action)...")
         classification = nano_classify_action(
-            client, model=args.nano_model, canon=canon, player_text=player_text
+            utility_client, model=args.utility_model, canon=canon, player_text=player_text
         )
         t_c1 = perf_counter()
+        status(f"[rules] done in {t_c1 - t_c0:.1f}s.")
 
         t_pre0 = perf_counter()
+        status(f"[gm] calling {args.chat_model} (frame stakes)...")
         pre = chat_pre_roll(
-            client,
+            chat_client,
             model=args.chat_model,
             canon=canon,
             recap=recap,
@@ -894,6 +1222,7 @@ def main() -> None:
             classification=classification,
         )
         t_pre1 = perf_counter()
+        status(f"[gm] done in {t_pre1 - t_pre0:.1f}s.")
 
         roll_result: Optional[RollResult] = None
         if pre.get("needs_roll", True):
@@ -906,8 +1235,9 @@ def main() -> None:
             bump_rng_usage(canon, 2 if pool <= 0 else pool)
 
             t_post0 = perf_counter()
+            status(f"[gm] calling {args.chat_model} (narrate outcome)...")
             post = chat_post_roll(
-                client,
+                chat_client,
                 model=args.chat_model,
                 canon=canon,
                 recap=recap,
@@ -916,6 +1246,7 @@ def main() -> None:
                 roll_result=roll_result,
             )
             t_post1 = perf_counter()
+            status(f"[gm] done in {t_post1 - t_post0:.1f}s.")
         else:
             # Treat pre-roll as the "post" for no-roll actions.
             post = {
@@ -928,9 +1259,10 @@ def main() -> None:
 
         # Delta application (nano)
         t_d0 = perf_counter()
+        status(f"[canon] calling {args.utility_model} (apply delta)...")
         delta = nano_delta(
-            client,
-            model=args.nano_model,
+            utility_client,
+            model=args.utility_model,
             canon=canon,
             player_text=player_text,
             gm_post=post,
@@ -938,6 +1270,7 @@ def main() -> None:
             consequences_suggested=classification.get("consequences_suggested", []),
         )
         t_d1 = perf_counter()
+        status(f"[canon] done in {t_d1 - t_d0:.1f}s.")
 
         # Enrich delta with facts learned from GM
         for f in post.get("facts_learned", []) or []:
@@ -960,10 +1293,24 @@ def main() -> None:
             f"## Turn {canon['turn_index']} ({stamp})",
             f"- Player: {player_text}",
         ]
+        # Utility classification context (helps adjudication evaluation).
+        try:
+            log_lines.append(
+                f"- Utility classify: {json.dumps({'needs_roll': bool(classification.get('needs_roll', True)), 'approach': classification.get('approach'), 'stat': classification.get('stat'), 'dice_pool': classification.get('dice_pool')}, ensure_ascii=False)}"
+            )
+        except Exception:
+            pass
         if roll_result is not None:
             log_lines.append(
                 f"- Roll: pool={classification.get('dice_pool', 0)} rolls={roll_result.rolls} highest={roll_result.highest} outcome={roll_result.outcome}"
             )
+        # GM stakes (from pre-roll) for clarity evaluation.
+        try:
+            stakes = pre.get("stakes") if isinstance(pre, dict) else None
+            if isinstance(stakes, dict) and stakes:
+                log_lines.append(f"- GM stakes: {json.dumps(stakes, ensure_ascii=False)}")
+        except Exception:
+            pass
         if delta.get("clocks"):
             log_lines.append(f"- Clock deltas: {json.dumps(delta.get('clocks'), ensure_ascii=False)}")
         if delta.get("pc"):
@@ -984,7 +1331,32 @@ def main() -> None:
         timings["turn_total_s"] = round((perf_counter() - turn_t0), 3)
         log_lines.append(f"- Timings: {json.dumps(timings, ensure_ascii=False)}")
         log_lines.append(f"- {render_state_block(canon)}")
+
+        # Persist the GM narration/outcome + the next question/options for evaluation.
+        log_lines += [
+            "",
+            "### GM narration",
+            *_md_blockquote(str(post.get("scene", ""))),
+            "",
+            "### GM question",
+            str(post.get("question", "What do you do?")).strip(),
+            "",
+            "### GM options",
+        ]
+        try:
+            o2 = post.get("options", []) or []
+            if isinstance(o2, list) and o2:
+                for opt in o2[:6]:
+                    log_lines.append(f"- {str(opt).strip()}")
+            else:
+                log_lines.append("- (none)")
+        except Exception:
+            log_lines.append("- (unavailable)")
+        log_lines += ["", "### Creative invite", str(post.get("creative_invite", "")).strip(), ""]
         append_log(log_lines)
+
+        # Track timings for session-level averages.
+        session_timings.append(timings)
 
         # Render to console
         print()
@@ -1003,6 +1375,35 @@ def main() -> None:
         print(post.get("creative_invite", ""))
 
         gm_last = post
+
+    # Archive canon snapshot for this session (for quality/latency comparisons).
+    if args.archive_canon:
+        try:
+            save_json(CANON_ARCHIVE_PATH, canon)
+        except Exception:
+            pass
+
+    # Auto metrics: compute simple averages for speed comparison.
+    try:
+        if session_timings:
+            keys = sorted({k for t in session_timings for k in t.keys()})
+            avgs: Dict[str, float] = {}
+            for k in keys:
+                vals = [float(t.get(k, 0.0)) for t in session_timings if k in t]
+                if vals:
+                    avgs[k] = round(sum(vals) / len(vals), 3)
+            auto_lines = [
+                "",
+                "## Auto metrics (filled by the runner)",
+                f"- turns_recorded: {len(session_timings)}",
+                f"- avg_timings_s: {json.dumps(avgs, ensure_ascii=False)}",
+            ]
+            append_eval(auto_lines)
+    except Exception:
+        pass
+
+    # Rotate after the run too, in case multiple sessions were created quickly.
+    rotate_sessions(campaign_dir=CAMPAIGN_DIR, keep=args.keep_sessions, exclude_session=None)
 
     print("\nDone.")
 
