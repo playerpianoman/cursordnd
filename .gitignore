@@ -1,0 +1,29 @@
+# Environment and secrets
+.env
+.env-local
+.env.*.local
+*.env
+
+# Cursor IDE
+.cursor
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo

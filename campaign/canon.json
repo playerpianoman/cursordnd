@@ -1,0 +1,82 @@
+{
+  "campaign_id": "local-dev",
+  "truths": [
+    "Tone: adventurous dungeon-crawl, not horror.",
+    "Rules: tools resolve dice; LLM narrates and suggests consequences; canon is the source of truth."
+  ],
+  "rng": {
+    "seed": 123,
+    "rolls_used": 18
+  },
+  "turn_index": 10,
+  "pcs": [
+    {
+      "id": "pc-fighter",
+      "name": "Fighter",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Shieldwall veteran",
+        "Always protects the weak"
+      ],
+      "harm": [
+        "Arm numb from shield snag",
+        "Glancing blow to ribs during recovery",
+        "Ribs bruised further by the goblin shove; pain flares when you strain.",
+        "Arm numb from shield snag worsens as you wrench through the slit",
+        "Hip bruised from goblin shove; slows movement.",
+        "Ribs throb with each breath as you strain under the pin; pain flares with movement"
+      ],
+      "stress": {
+        "current": 3,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    }
+  ],
+  "scene": {
+    "location": "The Old Drain - Dark Run",
+    "immediate_situation": "Pinned in the dip’s pinch as goblins close in; you must either break through into the deeper dark or barricade a momentary stand as reinforcements approach.",
+    "known_facts": [
+      "Goblin alarm is fully raised; reinforcements are actively responding."
+    ]
+  },
+  "clocks": [
+    {
+      "name": "Goblin alarm",
+      "current": 4,
+      "max": 4
+    },
+    {
+      "name": "Rats swarm",
+      "current": 3,
+      "max": 4
+    },
+    {
+      "name": "Torch dwindles",
+      "current": 2,
+      "max": 6
+    }
+  ],
+  "open_threads": [
+    "Why are goblins using the Old Drain?",
+    "What are the goblins guarding or moving through here?",
+    "Is there a side access (overflow slit, maintenance rung, cracked brick) to flank the choke point?",
+    "What is beyond the bend—what are the goblins guarding or moving through here beyond the choke point?",
+    "Is there a usable side recess or maintenance rung beyond the choke point?",
+    "Can you exploit a side recess to buy a momentary stand or create a misdirection for the goblins?",
+    "Can you use the dead rat as a decoy to misdirect pursuing goblins, given the trail of blood and scent?",
+    "Can you exploit a side recess beyond the choke point to slip away unseen when the goblins are concentrated at the bend?",
+    "How do you avoid being pinned now that the goblins are on full alert?"
+  ],
+  "clock_fires": {
+    "Goblin alarm": true
+  }
+}
