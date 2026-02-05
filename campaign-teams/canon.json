@@ -1,0 +1,147 @@
+{
+  "campaign_id": "teams-dev",
+  "truths": [
+    "Tone: adventurous dungeon-crawl, not horror.",
+    "Rules: tools resolve dice; LLM narrates; canon is source of truth. Personas are voice-only—no stateful outcomes."
+  ],
+  "rng": {
+    "seed": 123,
+    "rolls_used": 8
+  },
+  "turn_index": 1,
+  "pcs": [
+    {
+      "id": "pc-hero",
+      "name": "Hero",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Leader of the party",
+        "Quick to act"
+      ],
+      "harm": [
+        "Hero takes a minor hit."
+      ],
+      "stress": {
+        "current": 1,
+        "max": 3
+      },
+      "supply": {
+        "current": 2,
+        "max": 3
+      }
+    }
+  ],
+  "teammates": [
+    {
+      "id": "teammate-fighter",
+      "name": "Fighter",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Shieldwall veteran",
+        "Always protects the weak"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-rogue",
+      "name": "Rogue",
+      "stats": {
+        "might": 0,
+        "finesse": 2,
+        "wits": 2,
+        "spirit": 0
+      },
+      "traits": [
+        "Light fingers",
+        "Scouts ahead"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-mage",
+      "name": "Mage",
+      "stats": {
+        "might": 0,
+        "finesse": 0,
+        "wits": 2,
+        "spirit": 2
+      },
+      "traits": [
+        "Bookish",
+        "Prefers to avoid melee"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    }
+  ],
+  "hostiles": {
+    "count": 3,
+    "label": "goblins"
+  },
+  "scene": {
+    "location": "The Old Drain",
+    "immediate_situation": "Rogue's swift strike on the goblin at the alarm bell was parried, and the goblin continues to ring the alarm. Fighter remains in position to intercept approaching enemies.",
+    "known_facts": [
+      "Hero charged the goblin at the alarm bell.",
+      "The goblin was temporarily stunned but reacted quickly.",
+      "The goblin continues to ring the alarm bell.",
+      "Fighter has positioned themselves between the alarm goblin and the rest of the party.",
+      "Rogue attempts a swift strike on the goblin at the alarm bell, aiming for its weapon hand.",
+      "Mage's spell disrupts the goblins' formations."
+    ]
+  },
+  "clocks": [
+    {
+      "name": "Goblin alarm",
+      "current": 4,
+      "max": 4
+    },
+    {
+      "name": "Rats swarm",
+      "current": 0,
+      "max": 4
+    },
+    {
+      "name": "Torch dwindles",
+      "current": 0,
+      "max": 6
+    }
+  ],
+  "open_threads": [],
+  "clock_fires": {
+    "Goblin alarm": true
+  }
+}

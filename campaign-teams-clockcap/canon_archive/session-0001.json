@@ -1,0 +1,143 @@
+{
+  "campaign_id": "teams-fresh",
+  "truths": [
+    "Tone: adventurous dungeon-crawl, not horror.",
+    "Rules: tools resolve dice; LLM narrates; canon is source of truth. Personas are voice-only—no stateful outcomes."
+  ],
+  "rng": {
+    "seed": 123,
+    "rolls_used": 8
+  },
+  "turn_index": 1,
+  "pcs": [
+    {
+      "id": "pc-hero",
+      "name": "Hero",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Leader of the party",
+        "Quick to act"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 2,
+        "max": 3
+      }
+    }
+  ],
+  "teammates": [
+    {
+      "id": "teammate-fighter",
+      "name": "Fighter",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Shieldwall veteran",
+        "Always protects the weak"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-rogue",
+      "name": "Rogue",
+      "stats": {
+        "might": 0,
+        "finesse": 2,
+        "wits": 2,
+        "spirit": 0
+      },
+      "traits": [
+        "Light fingers",
+        "Scouts ahead"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-mage",
+      "name": "Mage",
+      "stats": {
+        "might": 0,
+        "finesse": 0,
+        "wits": 2,
+        "spirit": 2
+      },
+      "traits": [
+        "Bookish",
+        "Prefers to avoid melee"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    }
+  ],
+  "hostiles": {
+    "count": 1,
+    "label": "goblins"
+  },
+  "scene": {
+    "location": "The Old Drain",
+    "immediate_situation": "Hero charges the nearest goblin. Fighter engages a goblin. Rogue attempts to flank an engaged goblin. Mage prepares a ranged spell.",
+    "known_facts": [
+      "Hero charged the nearest goblin.",
+      "Fighter engaged a goblin to draw its attention.",
+      "Rogue attempted to flank an engaged goblin.",
+      "Goblin alarm is ticking.",
+      "One goblin eliminated.",
+      "Mage prepares a ranged spell."
+    ]
+  },
+  "clocks": [
+    {
+      "name": "Goblin alarm",
+      "current": 1,
+      "max": 4
+    },
+    {
+      "name": "Rats swarm",
+      "current": 0,
+      "max": 4
+    },
+    {
+      "name": "Torch dwindles",
+      "current": 0,
+      "max": 6
+    }
+  ],
+  "open_threads": [],
+  "clock_fires": {}
+}

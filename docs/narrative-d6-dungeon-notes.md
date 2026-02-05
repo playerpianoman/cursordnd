@@ -15,7 +15,7 @@
 - **State visibility**: we need a consistent “state block” (clocks, harm, stress, supply) every turn to avoid drift.
 - **Outcome authority**: the GM must stay disciplined—tools roll dice; narration interprets. If the model “decides” outcomes, trust erodes.
 - **Option prompts can feel prescriptive**: good for pacing, but must be paired with explicit permission for creative intent.
-
+1) 
 ## How to describe this system (short, accurate)
 
 **A lightweight, narrative-first d6 system inspired by Blades-style action rolls**, tuned for dungeon crawling:

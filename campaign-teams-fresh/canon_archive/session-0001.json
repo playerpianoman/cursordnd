@@ -1,0 +1,179 @@
+{
+  "campaign_id": "teams-fresh",
+  "truths": [
+    "Tone: adventurous dungeon-crawl, not horror.",
+    "Rules: tools resolve dice; LLM narrates; canon is source of truth. Personas are voice-only—no stateful outcomes."
+  ],
+  "rng": {
+    "seed": 123,
+    "rolls_used": 36
+  },
+  "turn_index": 5,
+  "pcs": [
+    {
+      "id": "pc-hero",
+      "name": "Hero",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Leader of the party",
+        "Quick to act"
+      ],
+      "harm": [
+        "Hero is surrounded."
+      ],
+      "stress": {
+        "current": 1,
+        "max": 3
+      },
+      "supply": {
+        "current": 2,
+        "max": 3
+      }
+    }
+  ],
+  "teammates": [
+    {
+      "id": "teammate-fighter",
+      "name": "Fighter",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Shieldwall veteran",
+        "Always protects the weak"
+      ],
+      "harm": [
+        "Hero is surrounded."
+      ],
+      "stress": {
+        "current": 1,
+        "max": 3
+      },
+      "supply": {
+        "current": 1,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-rogue",
+      "name": "Rogue",
+      "stats": {
+        "might": 0,
+        "finesse": 2,
+        "wits": 2,
+        "spirit": 0
+      },
+      "traits": [
+        "Light fingers",
+        "Scouts ahead"
+      ],
+      "harm": [
+        "Rogue is spotted"
+      ],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-mage",
+      "name": "Mage",
+      "stats": {
+        "might": 0,
+        "finesse": 0,
+        "wits": 2,
+        "spirit": 2
+      },
+      "traits": [
+        "Bookish",
+        "Prefers to avoid melee"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 2,
+        "max": 3
+      }
+    }
+  ],
+  "hostiles": {
+    "count": 0,
+    "label": "goblins"
+  },
+  "scene": {
+    "location": "The Old Drain",
+    "immediate_situation": "The Rogue's scouting attempt has failed, drawing unwanted attention and potentially jeopardizing the party's advantage. The Mage examines the surroundings for any magical residue, but finds none.",
+    "known_facts": [
+      "Hero prepares to flank the goblins.",
+      "Goblin attention may be drawn away.",
+      "Fighter moves to engage from the flank.",
+      "Rogue moves stealthily towards the descending path.",
+      "Rogue creates noise to draw goblin attention.",
+      "Rogue repositions for the flank.",
+      "Mage prepares a disruptive or damaging spell.",
+      "Mage intends to exploit enemy grouping.",
+      "Hero charges the nearest goblin.",
+      "Hero disrupts the goblin formation.",
+      "Hero draws the attention of the goblins.",
+      "Goblin alarm is fully raised; reinforcements are actively responding.",
+      "Fighter engages the goblins, forming a strong frontline with Hero.",
+      "Hero disrupts the goblin formation and draws their attention.",
+      "Rogue gains a flanking advantage.",
+      "Mage prepares no spell as the goblins scatter.",
+      "The goblins begin to retreat from the surprise attack.",
+      "Hero charges after the nearest fleeing goblin.",
+      "Fighter pursues the goblins, ready to intercept.",
+      "Rogue surprises a goblin.",
+      "Goblin alarm is partially reset due to successful intervention.",
+      "Mage is ready with a spell.",
+      "Hero charges the nearest fleeing goblin to prevent its escape and disruption.",
+      "Fighter intercepts a goblin.",
+      "Fighter blocks the goblin's escape.",
+      "Hero and Fighter are engaging the goblins.",
+      "Rogue is flanking the remaining goblin.",
+      "Mage's spell is less effective than hoped.",
+      "Hero prevents a goblin escape.",
+      "Your torch burns out; you light a fresh one (supply -1).",
+      "Fighter secures the area and checks for remaining threats.",
+      "Rogue attempted to scout ahead but was spotted, losing any flanking advantage.",
+      "Mage examines the surroundings for magical residue or lingering enchantments.",
+      "The area shows no signs of recent magical activity."
+    ]
+  },
+  "clocks": [
+    {
+      "name": "Goblin alarm",
+      "current": 4,
+      "max": 4
+    },
+    {
+      "name": "Rats swarm",
+      "current": 1,
+      "max": 4
+    },
+    {
+      "name": "Torch dwindles",
+      "current": 1,
+      "max": 6
+    }
+  ],
+  "open_threads": [],
+  "clock_fires": {
+    "Goblin alarm": true
+  }
+}

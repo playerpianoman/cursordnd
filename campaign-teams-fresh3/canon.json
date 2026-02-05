@@ -1,0 +1,185 @@
+{
+  "campaign_id": "teams-fresh",
+  "truths": [
+    "Tone: adventurous dungeon-crawl, not horror.",
+    "Rules: tools resolve dice; LLM narrates; canon is source of truth. Personas are voice-only—no stateful outcomes."
+  ],
+  "rng": {
+    "seed": 123,
+    "rolls_used": 34
+  },
+  "turn_index": 5,
+  "pcs": [
+    {
+      "id": "pc-hero",
+      "name": "Hero",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Leader of the party",
+        "Quick to act"
+      ],
+      "harm": [
+        "takes an opportunity attack"
+      ],
+      "stress": {
+        "current": 3,
+        "max": 3
+      },
+      "supply": {
+        "current": 2,
+        "max": 3
+      }
+    }
+  ],
+  "teammates": [
+    {
+      "id": "teammate-fighter",
+      "name": "Fighter",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Shieldwall veteran",
+        "Always protects the weak"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-rogue",
+      "name": "Rogue",
+      "stats": {
+        "might": 0,
+        "finesse": 2,
+        "wits": 2,
+        "spirit": 0
+      },
+      "traits": [
+        "Light fingers",
+        "Scouts ahead"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-mage",
+      "name": "Mage",
+      "stats": {
+        "might": 0,
+        "finesse": 0,
+        "wits": 2,
+        "spirit": 2
+      },
+      "traits": [
+        "Bookish",
+        "Prefers to avoid melee"
+      ],
+      "harm": [
+        "takes an opportunity attack"
+      ],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    }
+  ],
+  "hostiles": {
+    "count": 8,
+    "label": "goblins"
+  },
+  "scene": {
+    "location": "The Old Drain",
+    "immediate_situation": "The party pushes through the opening to regroup with Rogue. Mage follows closely behind Hero, readying a spell to disrupt any goblins attempting to intercept the party or reinforce their allies. Rats swarm in force; bites and scrambling bodies make movement hazardous.",
+    "known_facts": [
+      "Hero attempted to silence the goblin alarm, but it was a mixed success.",
+      "Fighter intercepts goblins attempting to flank Hero or reach allies.",
+      "Rogue attempts to flank the goblins and deal with backline threats.",
+      "Mage prepares a spell to hinder or damage multiple goblins.",
+      "The goblin alarm is partially raised.",
+      "Goblin alarm is fully raised (world roll 5); reinforcements pour in (+4 goblins).",
+      "Hero engaged the goblins directly in front of the party and pushed them back.",
+      "Fighter intercepts goblins attempting to bypass Hero or threaten the rear.",
+      "Rogue attempts to flank the goblins, but is spotted and engaged.",
+      "Mage's spell disrupts the largest group of goblins engaging the party.",
+      "The goblin alarm fully rings, and reinforcements arrive.",
+      "Mage prepares and casts a disruptive spell.",
+      "Hero charges forward, breaking through the goblin line.",
+      "A path opens for the party to reach Rogue.",
+      "Hero takes an opportunity attack.",
+      "Reinforcements are drawn to Hero's charge.",
+      "Fighter uses their shield to protect Hero and pushes through goblins.",
+      "Rogue's flanking attempt is noticed, drawing some attention and pressure from the main engagement as the party breaks through.",
+      "Hero's charge creates an opening for the party to reach Rogue.",
+      "Rogue creates a distraction for the goblins.",
+      "Mage's disruptive spell hinders the goblin reinforcements.",
+      "Mage's spell has an unintended effect.",
+      "Mage's spell disrupts allies.",
+      "Hero charged through the goblins towards Rogue, drawing enemy attention.",
+      "Hero took an opportunity attack.",
+      "An opening was created for the party to reach Rogue.",
+      "Fighter advances, intercepting goblins and pushing through the enemy line.",
+      "Rogue's engagement draws some goblin attention, potentially creating a brief window for the party.",
+      "Rogue strikes a critical blow against a goblin.",
+      "Mage's spell disrupted the goblin reinforcements, but also caused minor disorientation among allies.",
+      "Hero's charge created an opening, but allies are slightly disoriented due to Mage's spell.",
+      "Hero charged forward through the goblins, creating an opening for the party to reach the Rogue.",
+      "Hero drew enemy attention and opportunity attacks.",
+      "The party pushes through the opening to regroup with Rogue.",
+      "Rats swarm in force; bites and scrambling bodies make movement hazardous.",
+      "Fighter advances, using their shield to intercept any goblins that try to interfere with Hero or flank the party.",
+      "Rogue disengages from their current engagement.",
+      "Rogue moves towards the party.",
+      "Mage prepares a spell to disrupt goblins and follows Hero."
+    ]
+  },
+  "clocks": [
+    {
+      "name": "Goblin alarm",
+      "current": 4,
+      "max": 4
+    },
+    {
+      "name": "Rats swarm",
+      "current": 4,
+      "max": 4
+    },
+    {
+      "name": "Torch dwindles",
+      "current": 4,
+      "max": 6
+    }
+  ],
+  "open_threads": [
+    "How do the remaining goblins consolidate and attack the regrouping party?"
+  ],
+  "clock_fires": {
+    "Goblin alarm": true,
+    "Rats swarm": true
+  }
+}

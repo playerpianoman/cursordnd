@@ -1,0 +1,181 @@
+{
+  "campaign_id": "teams-fresh",
+  "truths": [
+    "Tone: adventurous dungeon-crawl, not horror.",
+    "Rules: tools resolve dice; LLM narrates; canon is source of truth. Personas are voice-only—no stateful outcomes."
+  ],
+  "rng": {
+    "seed": 123,
+    "rolls_used": 28
+  },
+  "turn_index": 5,
+  "pcs": [
+    {
+      "id": "pc-hero",
+      "name": "Hero",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Leader of the party",
+        "Quick to act"
+      ],
+      "harm": [
+        "Scratches from goblin's rusty dagger",
+        "Bruised ribs from goblin's retaliatory strike"
+      ],
+      "stress": {
+        "current": 3,
+        "max": 3
+      },
+      "supply": {
+        "current": 0,
+        "max": 3
+      }
+    }
+  ],
+  "teammates": [
+    {
+      "id": "teammate-fighter",
+      "name": "Fighter",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Shieldwall veteran",
+        "Always protects the weak"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-rogue",
+      "name": "Rogue",
+      "stats": {
+        "might": 0,
+        "finesse": 2,
+        "wits": 2,
+        "spirit": 0
+      },
+      "traits": [
+        "Light fingers",
+        "Scouts ahead"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 2,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-mage",
+      "name": "Mage",
+      "stats": {
+        "might": 0,
+        "finesse": 0,
+        "wits": 2,
+        "spirit": 2
+      },
+      "traits": [
+        "Bookish",
+        "Prefers to avoid melee"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 2,
+        "max": 3
+      },
+      "supply": {
+        "current": 2,
+        "max": 3
+      }
+    }
+  ],
+  "hostiles": {
+    "count": 3,
+    "label": "goblins"
+  },
+  "scene": {
+    "location": "The Old Drain",
+    "immediate_situation": "While the Mage's spell has incapacitated the remaining goblins, Hero is carefully searching the immediate area. Fighter will survey the area for any immediate threats or signs of further ambush while keeping an eye on the incapacitated goblins. Rogue cautiously approaches the source of the faint illusion spell using stealth, aiming to identify any hidden dangers or mechanisms before the others commit. Hero will assist the Mage in investigating the faint illusion spell. The Mage's attempt to examine the illusion spell resulted in a critical failure, possibly alerting unseen entities or triggering a negative magical effect.",
+    "known_facts": [
+      "Hero attempted to move stealthily into a flanking position.",
+      "Hero attempted to move stealthily into a flanking position, but was detected.",
+      "Fighter moved to engage alerted goblins with a shieldwall defense.",
+      "The party attempted to stealthily engage the goblins.",
+      "The stealth attempt was incomplete, and an alarm was sounded.",
+      "Fighter moved to defend the party with a shieldwall.",
+      "Mage is preparing a spell",
+      "Mage is staying out of melee range",
+      "Hero directly engaged the goblin sounding the alarm.",
+      "Hero's attempt to silence the goblin was a critical failure.",
+      "The alarm was fully sounded.",
+      "The goblin successfully struck Hero.",
+      "Hero was exposed after the failed attempt.",
+      "Fighter is holding the shieldwall to protect the party.",
+      "Fighter is preventing immediate goblin advances.",
+      "Rogue attempted a sneaky maneuver to get closer to the alarm-sounding goblin, preparing to strike.",
+      "Rogue's maneuver was successful, and they are now in a position to strike.",
+      "Mage is preparing a disabling spell on the goblins.",
+      "Hero pushed into the alerted goblins and struck the alarm-sounding one.",
+      "Hero was counter-attacked and took damage.",
+      "Fighter maintained the shieldwall, preventing goblins from bypassing.",
+      "Fighter focused on protecting the squishier party members.",
+      "Rogue successfully struck and killed a goblin.",
+      "Mage's spell is completed with a critical success.",
+      "Mage's spell incapacitates the remaining goblins.",
+      "Hero carefully searches the immediate area for dropped items or hidden clues.",
+      "Fighter surveys the area for immediate threats and signs of further ambush.",
+      "Fighter keeps an eye on the incapacitated goblins.",
+      "Goblin alarm is fully raised (world roll 2); reinforcements pour in (+1 goblins).",
+      "Rogue searched the goblins and their immediate surroundings for loot and useful gear.",
+      "Rogue found nothing but goblin refuse.",
+      "Mage examines the area for magical residue or enchantments.",
+      "Mage detects a faint illusion spell.",
+      "Hero will assist the Mage in investigating the faint illusion spell.",
+      "Fighter maintains a defensive posture, guarding the party's rear.",
+      "Rogue cautiously approaches the illusion's source using stealth.",
+      "Rogue is attempting to identify hidden dangers or mechanisms related to the illusion.",
+      "Mage examines the faint illusion spell, attempting to discern its nature and purpose.",
+      "The examination of the illusion spell by the Mage results in a critical failure."
+    ]
+  },
+  "clocks": [
+    {
+      "name": "Goblin alarm",
+      "current": 4,
+      "max": 4
+    },
+    {
+      "name": "Rats swarm",
+      "current": 1,
+      "max": 4
+    },
+    {
+      "name": "Torch dwindles",
+      "current": 2,
+      "max": 6
+    }
+  ],
+  "open_threads": [],
+  "clock_fires": {
+    "Goblin alarm": true
+  }
+}

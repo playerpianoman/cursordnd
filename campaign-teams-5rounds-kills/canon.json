@@ -1,0 +1,179 @@
+{
+  "campaign_id": "teams-fresh",
+  "truths": [
+    "Tone: adventurous dungeon-crawl, not horror.",
+    "Rules: tools resolve dice; LLM narrates; canon is source of truth. Personas are voice-only—no stateful outcomes."
+  ],
+  "rng": {
+    "seed": 123,
+    "rolls_used": 28
+  },
+  "turn_index": 5,
+  "pcs": [
+    {
+      "id": "pc-hero",
+      "name": "Hero",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Leader of the party",
+        "Quick to act"
+      ],
+      "harm": [
+        "Takes heavy damage if surrounded."
+      ],
+      "stress": {
+        "current": 3,
+        "max": 3
+      },
+      "supply": {
+        "current": 1,
+        "max": 3
+      }
+    }
+  ],
+  "teammates": [
+    {
+      "id": "teammate-fighter",
+      "name": "Fighter",
+      "stats": {
+        "might": 2,
+        "finesse": 1,
+        "wits": 1,
+        "spirit": 0
+      },
+      "traits": [
+        "Shieldwall veteran",
+        "Always protects the weak"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 1,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-rogue",
+      "name": "Rogue",
+      "stats": {
+        "might": 0,
+        "finesse": 2,
+        "wits": 2,
+        "spirit": 0
+      },
+      "traits": [
+        "Light fingers",
+        "Scouts ahead"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 0,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    {
+      "id": "teammate-mage",
+      "name": "Mage",
+      "stats": {
+        "might": 0,
+        "finesse": 0,
+        "wits": 2,
+        "spirit": 2
+      },
+      "traits": [
+        "Bookish",
+        "Prefers to avoid melee"
+      ],
+      "harm": [],
+      "stress": {
+        "current": 1,
+        "max": 3
+      },
+      "supply": {
+        "current": 3,
+        "max": 3
+      }
+    }
+  ],
+  "hostiles": {
+    "count": 1,
+    "label": "goblins"
+  },
+  "scene": {
+    "location": "The Old Drain",
+    "immediate_situation": "The Mage's spell misfires spectacularly, creating a brief, chaotic distraction. The Goblin alarm clock ticks closer to its final moment, and the Torch dwindles further.",
+    "known_facts": [
+      "The group's attempt at stealth failed spectacularly.",
+      "Enemies are alerted to the party's presence.",
+      "Fighter advances cautiously, shield ready.",
+      "Rogue attempts to flank the enemies from the shadows.",
+      "Rogue is looking for an opportune moment to strike.",
+      "Mage is holding back, preparing a spell for the melee.",
+      "Hero charges directly into the goblin ranks.",
+      "Fighter engages the nearest goblins to protect the party.",
+      "Fighter absorbs enemy attacks.",
+      "Fighter creates a strong defensive front.",
+      "Fighter may be vulnerable to flanking.",
+      "Fighter challenges the leader of the goblins.",
+      "Rogue attempts to flank the goblins amidst the confusion.",
+      "The rogue successfully exploits the opening created by the charge.",
+      "One goblin is eliminated.",
+      "The goblins are now more aware of the flanking maneuver.",
+      "Mage prepares an area-of-effect spell.",
+      "The party is engaging the goblins head-on.",
+      "Hero charges into the goblin ranks, drawing their attention.",
+      "Fighter maintains their defensive stance.",
+      "The party rallies behind the Fighter.",
+      "The party prepares to attack once the Mage's spell hits.",
+      "Rogue positions to strike after Mage's spell",
+      "Rogue seeks opportune moment to attack",
+      "Mage is charging an area-of-effect spell.",
+      "Hero eliminates the last goblin with a critical strike.",
+      "The group presses the advantage and focuses fire on remaining goblins.",
+      "Goblin alarm is fully raised (world roll 2); reinforcements pour in (+1 goblins).",
+      "Hero takes the fight directly to the remaining goblin.",
+      "Hero is exposed to flanking maneuvers from potential reinforcements.",
+      "Fighter moves to intercept approaching goblin reinforcements.",
+      "Fighter prepares to form a defensive line against reinforcements.",
+      "Rogue attempts to scout ahead for reinforcements.",
+      "Rogue moves past the main engagement.",
+      "Mage's spell is misfired due to a critical failure, consuming valuable spell energy.",
+      "The misfired spell narrowly avoids hitting allies but creates a momentary distraction."
+    ]
+  },
+  "clocks": [
+    {
+      "name": "Goblin alarm",
+      "current": 4,
+      "max": 4
+    },
+    {
+      "name": "Rats swarm",
+      "current": 0,
+      "max": 4
+    },
+    {
+      "name": "Torch dwindles",
+      "current": 4,
+      "max": 6
+    }
+  ],
+  "open_threads": [
+    "What does the rogue discover when scouting ahead?"
+  ],
+  "clock_fires": {
+    "Goblin alarm": true
+  }
+}
